@@ -5,16 +5,16 @@
 	<title>Document</title>
 </head>
 <body>
-	<!--
+	
 
+<?php
 
+	include_once 'controller/DefaultController.php';
 
-	//include_once 'controller/DefaultController.php';
+	$controller = new DefaultController();
+	$controller->invoke();
 
-	//$controller = new DefaultController();
-	//$controller->invoke();
--->
-<h1>hola</h1>
+?>
 
 
 </body>
