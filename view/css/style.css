@@ -1,0 +1,95 @@
+*{
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+article, footer, header, nav, section{
+	display: block;
+}
+
+body{
+	background: #212121 url(../img/fondo.jpg);
+	color: white;
+	font-size: 1em;
+}
+
+a{
+	color: #57ABB8;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a:hover{
+	color: #f60;
+}
+
+img{
+	max-width: 100%
+}
+
+form{
+	width: 100%;
+}
+
+form div{
+	margin: .5em;
+}
+
+input[type='email'], input[type='text'], textarea{
+	background: #eee;
+	border-radius: .25em;
+	color: #f60;
+	font-size: 1em;
+	padding: .25em;
+	width: 95%;
+}
+
+input[type='submit']{
+	background: #f90;
+	color: #500;
+	font-size: 1em;
+	padding: .25em;
+}
+
+textarea{
+	resize: none;
+}
+
+header, section, #content, footer{
+	background: white url(../img/fondo-interno.jpg);
+	margin: 0 auto;
+	max-width: 90%;
+	text-align: center;
+}
+
+header h1, nav{
+	display: inline-block;
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+nav ul{
+	list-style: none;
+}
+
+nav li{
+	display: inline-block;
+	padding: .1em;
+	vertical-align: top;
+}
+
+section #main, aside{
+	background: #1e6381;
+	border-radius: .5em;
+	display: inline-block;
+	margin: 0 auto;
+	max-width: 100%;
+	padding: .25em;
+	vertical-align: top;
+	width: 65%;
+}
+
+aside{
+	width: 30%;
+}
