@@ -1,0 +1,15 @@
+{
+    "name": "adriansb3105/AsociacionIntegralAdrianSerranoSemestreIIIAnno2016",
+    "description": "Project for the management of the Guadalupe Community Association ",
+    "version": "0.0.1",
+    "homepage": "https://deargift.herokuapp.com/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Adrian Serrano",
+            "email": "adriansb3105@gmail.com",
+            "homepage": "https://deargift.herokuapp.com/",
+            "role": "Developer"
+        }
+    ]
+}
