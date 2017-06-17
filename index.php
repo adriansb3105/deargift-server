@@ -3,7 +3,7 @@
 	//include_once 'controller/DefaultController.php';
 	include_once 'controller/UserController.php';
 
-	if(isset($_POST['login'])){
+	if(isset($_GET['login'])){
 	  $controller = new UserController();
 
 	  if(isset($_POST['username']) && isset($_POST['password'])){
