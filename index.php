@@ -1,18 +1,20 @@
 <?php
 
 	//include_once 'controller/DefaultController.php';
-	include_once 'controller/UserController.php';
+	//include_once 'controller/UserController.php';
 
 	if(isset($_GET['login'])){
-	  $controller = new UserController();
+	  //$controller = new UserController();
 
-	  if(isset($_POST['username']) && isset($_POST['password'])){
+	  if(isset($_POST["username"]) && isset($_POST['password'])){
 	  	$username = $_POST['username'];
 	  	$password = $_POST['password'];
 
-	  	$user = $controller->login($username, $password);
+	  	//$user = $controller->login($username, $password);
 
-	  	echo $user;
+	  	echo $username;
+	  }else{
+	  	echo 'mal';
 	  }
 	}
 	//else{
