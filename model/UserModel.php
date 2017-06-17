@@ -27,7 +27,7 @@
     }
 
     public function login($username, $password){
-      $query = mysqli_query($this -> conn, "select id, username, password from Usuario where username='"+$username+"' AND password='"+$password+"';");
+      $query = mysqli_query($this -> conn, "select id, email, password from Usuario where email='"+$username+"' AND password='"+$password+"';");
 
       $data = mysqli_fetch_all($query);
 
