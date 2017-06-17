@@ -1,21 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
-	
-
 <?php
 
-	include_once 'controller/DefaultController.php';
+	//include_once 'controller/DefaultController.php';
+	include_once 'controller/UserController.php';
 
-	$controller = new DefaultController();
-	$controller->invoke();
+	if(isset($_POST['login'])){
+	  $controller = new UserController();
 
-?>
+	  if(isset($_POST['username']) && isset($_POST['password'])){
+	  	$username = $_POST['username'];
+	  	$password = $_POST['password'];
 
+	  	$user = $controller->login($username, $password);
 
-</body>
-</html>
+	  	echo $user;
+	  }
+	}
+	//else{
+	//	$controller = new DefaultController();
+	//	$controller->invoke();
+	//}
