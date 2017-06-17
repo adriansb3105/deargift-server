@@ -41,7 +41,7 @@
       }
     }
 
-    public function login($username, $password){
-      return $this->model->login($username, $password);
+    public function login($email, $password){
+      return $this->model->login($email, $password);
     }
   }

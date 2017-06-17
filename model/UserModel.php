@@ -26,8 +26,8 @@
       return $data;
     }
 
-    public function login($username, $password){
-      $query = mysqli_query($this -> conn, "select id, email, password from Usuario where email='"+$username+"' AND password='"+$password+"';");
+    public function login($email, $password){
+      $query = mysqli_query($this -> conn, "call sp_login('".$email."', '".$password."')");
 
       $data = mysqli_fetch_all($query);
 
