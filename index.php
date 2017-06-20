@@ -32,12 +32,9 @@ if(isset($_GET['login'])){
 
 	$id_sexo = 1;
 	$id_etapa = 1;
-	$id_categoria = 4;
-	$id_color = 1;
-	//$pasatiempo = array('accesorios', 'juguetes');
-	//$color = array('tierra');
-
-	$products = $controller->getProducts($id_sexo, $id_etapa, $id_categoria, $id_color);
+	$categoria = array(1, 4);
+	$color = array(1);
+	
+	$products = $controller->getProducts($id_sexo, $id_etapa, $categoria, $color);
 	echo json_encode($products);
-
 }

@@ -8,19 +8,25 @@
       $this->model = new ProductModel();
     }
 
-    public function getProducts($id_sexo, $id_etapa, $id_categoria, $id_color){//llamarla varias veces por cada pasatiempo y color, evitar que los productos tengan el mismo id
-/*
-      $products = array();
+    public function getProducts($id_sexo, $id_etapa, $categoria, $color){//llamarla varias veces por cada categoria y color, evitar que los productos tengan el mismo id
 
-      for ($i=0; $i < sizeof($pasatiempo); $i++) { 
-        array_push($products, $pasatiempo[$i]);
+      $products = array();
+      $products2 = array();
+
+      for ($i=0; $i < sizeof($categoria); $i++) { 
+        for ($j=0; $j < sizeof($color); $j++) {
+          array_push($products, $this->model->getProducts($id_sexo, $id_etapa, $categoria[$i], $color[$j]));
+        }
       }
 
+      
+      for ($k=0; $k < sizeof($products); $k++) { 
+        if(sizeof($products[$k]) > 0){
+          array_push($products2, $products[$k]);
+        }
+      }
 
-      return $products;
-*/
-
-    return $this->model->getProducts($id_sexo, $id_etapa, $id_categoria, $id_color);
+      return $products2;
 
     }
   }
