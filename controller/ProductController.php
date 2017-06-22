@@ -11,22 +11,21 @@
     public function getProducts($id_sexo, $id_etapa, $categoria, $color){//llamarla varias veces por cada categoria y color, evitar que los productos tengan el mismo id
 
       $products = array();
-      $products2 = array();
 
       for ($i=0; $i < sizeof($categoria); $i++) { 
-        for ($j=0; $j < sizeof($color); $j++) {
-          array_push($products, $this->model->getProducts($id_sexo, $id_etapa, $categoria[$i], $color[$j]));
+       for ($j=0; $j < sizeof($color); $j++) {
+         $producttmp = $this->model->getProducts($id_sexo, $id_etapa, $categoria[$i], $color[$j]);
+
+         if (sizeof($producttmp) > 0) {
+          for ($k=0; $k < sizeof($producttmp); $k++) {
+            array_push($products, $producttmp[$k]);
+            //return $producttmp[$k];
+          }
+
+         }
         }
       }
 
-      
-      for ($k=0; $k < sizeof($products); $k++) { 
-        if(sizeof($products[$k]) > 0){
-          array_push($products2, $products[$k]);
-        }
-      }
-
-      return $products2;
-
+      return $products;
     }
   }

@@ -17,24 +17,26 @@ if(isset($_GET['login'])){
 	}
 }elseif(isset($_GET['getProducts'])){
 	$controller = new ProductController();
-	/*if(isset($_POST["sexo"]) && isset($_POST['etapa']) && isset($_POST['pasatiempo']) && isset($_POST['color'])){
-		$sexo = $_POST["sexo"];
-		$etapa = $_POST["etapa"];
-		$pasatiempo = $_POST["pasatiempo"];
+	if(isset($_POST["sexo"]) && isset($_POST['etapa']) && isset($_POST['pasatiempo']) && isset($_POST['color'])){
+		$id_sexo = $_POST["sexo"];
+		$id_etapa = $_POST["etapa"];
+		$categoria = $_POST["pasatiempo"];
 		$color = $_POST["color"];
 
-		$products = $controller->getProducts($sexo, $etapa, $pasatiempo, $color);
+		echo json_encode($controller->getProducts($id_sexo, $id_etapa, $categoria, $color));	
 
-		echo json_encode($products);
 	}else{
 		echo false;
-	}*/
+	}
 
-	$id_sexo = 1;
-	$id_etapa = 1;
-	$categoria = array(1, 4);
-	$color = array(1);
-	
-	$products = $controller->getProducts($id_sexo, $id_etapa, $categoria, $color);
-	echo json_encode($products);
+/*
+	$id_sexo = 12;
+	$id_etapa = 12;
+	$categoria = array(32);
+	$color = array(22, 72);
+
+	echo "<pre>".."</pre>";
+	//echo "<pre>".json_encode($controller->getProducts($id_sexo, $id_etapa, $categoria, $color), JSON_PRETTY_PRINT)."</pre>";
+
+	*/
 }

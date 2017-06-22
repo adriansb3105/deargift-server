@@ -21,15 +21,20 @@
     public function getProducts($id_sexo, $id_etapa, $id_categoria, $id_color){
       //$query = mysqli_query($this -> conn, "call sp_getProducts('".$id_sexo."', '".$id_etapa."', '".$id_categoria."', '".$id_color."')");
       
-      $string = "select p.id, p.nombre, p.descripcion, p.precio, s.sexo, e.nombre as etapa, c.nombre as categoria, 
-                      cl.color as color, i.url
-              from Producto as p INNER JOIN Sexo as s INNER JOIN Etapa as e INNER JOIN Producto_Etapa as pe
-                      INNER JOIN Categoria as c INNER JOIN Producto_Categoria as pc INNER JOIN Color as cl 
-                      INNER JOIN Producto_Color as pcl INNER JOIN Producto_Imagen as pi INNER JOIN Imagen as i
-    ON p.id_sexo = '".$id_sexo."' AND s.id = '".$id_sexo."' AND e.id = '".$id_etapa."' AND pe.id_etapa = '".$id_etapa."' AND
-    c.id = '".$id_categoria."' AND pc.id_categoria = '".$id_categoria."' AND cl.id = '".$id_color."' AND 
-        pcl.id_color = '".$id_color."' AND p.id = pi.id_producto AND i.id = pi.id_imagen;";
-
+      
+      $string = " select p.id, p.nombre, p.descripcion, p.precio, s.sexo, ct.nombre as categoria, 
+                  e.nombre as etapa, cl.color as color, i.url as imagen
+                  from Producto as p 
+                  inner join Sexo as s on s.id = p.id_sexo AND s.id = ".$id_sexo." 
+                  inner join Producto_Categoria as pc on pc.id_producto = p.id 
+                  inner join Categoria as ct on pc.id_categoria = ct.id AND ct.id = ".$id_categoria."
+                  inner join Producto_Etapa as pe on pe.id_producto = p.id
+                  inner join Etapa as e on e.id = pe.id_etapa AND e.id = ".$id_etapa."
+                  inner join Producto_Color as pcl on pcl.id_producto = p.id
+                  inner join Color as cl on cl.id = pcl.id_color AND cl.id = ".$id_color."
+                  inner join Producto_Imagen as pi on pi.id_producto = p.id
+                  inner join Imagen as i on i.id = pi.id_imagen;";
+      
 
       $query = mysqli_query($this -> conn, $string);
 
