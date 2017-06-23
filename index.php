@@ -31,12 +31,12 @@ if(isset($_GET['login'])){
 
 /*
 	$id_sexo = 12;
-	$id_etapa = 12;
+	$id_etapa = 22;
 	$categoria = array(32);
 	$color = array(22, 72);
 
-	echo "<pre>".."</pre>";
-	//echo "<pre>".json_encode($controller->getProducts($id_sexo, $id_etapa, $categoria, $color), JSON_PRETTY_PRINT)."</pre>";
-
+	//print_r($controller->getProducts($id_sexo, $id_etapa, $categoria, $color));
+	echo json_encode($controller->getProducts($id_sexo, $id_etapa, $categoria, $color));
+	//echo json_encode('{tipo: 1, nombre: yo}');
 	*/
 }
