@@ -9,15 +9,14 @@
       $this->model = new ProductModel();
     }
 
-    public function getProducts($id_sexo, $id_etapa, $categoria, $color){//llamarla varias veces por cada categoria y color, evitar que los productos tengan el mismo id
+    public function getProducts($sexo, $id_etapa, $categoria, $color){//llamarla varias veces por cada categoria y color, evitar que los productos tengan el mismo id
 
       $products = array();
       $products_json = array();
 
       for ($i=0; $i < sizeof($categoria); $i++) { 
-       for ($j=0; $j < sizeof($color); $j++) {
 
-         $producttmp = $this->model->getProducts($id_sexo, $id_etapa, $categoria[$i], $color[$j]);
+         $producttmp = $this->model->getProducts($sexo, $id_etapa, $categoria[$i], $color);
 
          if (sizeof($producttmp) > 0) {
           for ($k=0; $k < sizeof($producttmp); $k++) {
@@ -39,7 +38,6 @@
           }
 
          }
-        }
       }
 
       //if (sizeof($products) > 0) {
