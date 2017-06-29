@@ -15,6 +15,19 @@ if(isset($_GET['login'])){
 
 		echo json_encode($user);
 	}
+}else if(isset($_GET['registerUser'])){
+	$controller = new UserController();
+
+	if(isset($_POST["name"]) && isset($_POST["email"]) && isset($_POST['password']) && isset($_POST["tipo"])){
+		$name = $_POST['name'];
+		$email = $_POST['email'];
+		$password = $_POST['password'];
+		$tipo = $_POST['tipo'];
+
+		$isRegistered = $controller->register($name, $email, $password, $tipo);
+
+		echo $isRegistered;
+	}
 }elseif(isset($_GET['getProducts'])){
 	$controller = new ProductController();
 	if(isset($_POST["sexo"]) && isset($_POST['etapa']) && isset($_POST['pasatiempo']) && isset($_POST['color'])){

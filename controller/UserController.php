@@ -44,4 +44,8 @@
     public function login($email, $password){
       return $this->model->login($email, $password);
     }
+
+    public function register($name, $email, $password, $tipo){
+      return $this->model->register($name, $email, $password, $tipo);
+    }
   }

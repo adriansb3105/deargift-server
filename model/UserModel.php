@@ -33,6 +33,12 @@
 
       return $data;
     }
+
+    public function register($name, $email, $password, $tipo){
+      $query = mysqli_query($this -> conn, "call sp_register('".$email."', '".$password."', '".$tipo."', '".$name."')");
+
+      return $query;
+    }
   }
 
 
