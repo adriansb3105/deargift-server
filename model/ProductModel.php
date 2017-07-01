@@ -33,7 +33,9 @@
                   inner join Color as cl on cl.id = pcl.id_color AND cl.id = ".$id_color."
                   inner join Producto_Imagen as pi on pi.id_producto = p.id
                   inner join Imagen as i on i.id = pi.id_imagen
-                  where p.sexo = '".$sexo."';";
+                  where p.sexo = '".$sexo."' OR p.sexo = 'ambos';";
+
+                  //where p.sexo = 'hombre' OR p.sexo = 'ambos';
       
 
       $query = mysqli_query($this -> conn, $string);
