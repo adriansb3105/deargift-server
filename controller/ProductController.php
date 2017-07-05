@@ -14,9 +14,9 @@
       $products = array();
       $products_json = array();
 
-      for ($i=0; $i < sizeof($categoria); $i++) { 
+      //for ($i=0; $i < sizeof($categoria); $i++) { 
 
-         $producttmp = $this->model->getProducts($sexo, $id_etapa, $categoria[$i], $color);
+         $producttmp = $this->model->getProducts($sexo, $id_etapa, $categoria, $color);
 
          if (sizeof($producttmp) > 0) {
           for ($k=0; $k < sizeof($producttmp); $k++) {
@@ -38,7 +38,7 @@
           }
 
          }
-      }
+      //}
 
       //if (sizeof($products) > 0) {
       //  for ($l=0; $l < sizeof($products); $l++) { 

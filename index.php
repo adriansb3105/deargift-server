@@ -11,9 +11,38 @@ if(isset($_GET['login'])){
 		$email = $_POST['email'];
 		$password = $_POST['password'];
 
-		$user = $controller->login($email, $password);
+		$user = $controller->login($email, $password)[0];
+		//print_r($controller->login('nela@gmail.com', 'nela')[0]);
 
-		echo json_encode($user);
+
+		
+		$cat = '[';
+
+		//for ($i=0; $i < sizeof($user); $i++) { 
+		if(sizeof($user) > 0){
+			$cat .= '{';
+
+			$cat .= '"id":';
+			$cat .= $user[0];
+			$cat .= ',';
+
+			$cat .= '"email":';
+			$cat .= '"'.$user[1].'"';
+			$cat .= ',';
+
+			$cat .= '"tipo":';
+			$cat .= '"'.$user[2].'"';
+			$cat .= ',';
+
+			$cat .= '"nombre":';
+			$cat .= '"'.$user[3].'"';
+
+			$cat .= '}';
+		}
+		$cat .= ']';
+		
+
+		echo $cat;
 	}
 }else if(isset($_GET['registerUser'])){
 	$controller = new UserController();
@@ -41,10 +70,10 @@ if(isset($_GET['login'])){
 	
 
 
-	//$sexo = "hombre";
-	//$id_etapa = 2;
-	//$categoria = array(32);
-	//$color = 2;
+	//$sexo = "mujer";
+	//$id_etapa = 32;
+	//$categoria = 42;
+	//$color = 22;
 
 
 	$cat = '[';
@@ -97,7 +126,11 @@ if(isset($_GET['login'])){
 
 	
 	
-	echo $cat;
+	print_r($cat);
+	//echo $cat;
+
+
+
 
 	//$controller->getProducts($sexo, $id_etapa, $categoria, $color)
 
@@ -115,6 +148,10 @@ if(isset($_GET['login'])){
 	//$array = array(1,2,3,4,5,6);
 	//$change = array('key1' => '1', 'key2' => '2', 'key3' => '3');
 	//echo json_encode($change);
+
+
+
+
 
 	}else{
 		echo false;
