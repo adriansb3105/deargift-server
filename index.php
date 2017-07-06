@@ -71,6 +71,27 @@ if(isset($_GET['login'])){
 		echo $isCreated;
 	}
 
+}elseif(isset($_GET['buy'])){
+	$controller = new ProductController();
+
+	if(isset($_POST["correo"]) && isset($_POST["id"]) && isset($_POST["nombre"]) && isset($_POST["descripcion"]) && isset($_POST["precio"]) && isset($_POST["sexo"]) && isset($_POST["categoria"]) && isset($_POST["etapa"]) && isset($_POST["color"]) && isset($_POST["url"])){
+		
+		$correo = $_POST['correo'];
+		$id = $_POST['id'];
+		$nombre = $_POST['nombre'];
+		$descripcion = $_POST['descripcion'];
+		$precio = $_POST['precio'];
+		$sexo = $_POST['sexo'];
+		$categoria = $_POST['categoria'];
+		$etapa = $_POST['etapa'];
+		$color = $_POST['color'];
+		$url = $_POST['url'];
+
+		$isInserted = $controller->buyProduct($correo, $id, $nombre, $descripcion, $precio, $sexo, $categoria, $etapa, $color, $url);
+
+		echo $isInserted;
+	}
+
 }elseif(isset($_GET['getProducts'])){
 	$controller = new ProductController();
 	if(isset($_POST["sexo"]) && isset($_POST['etapa']) && isset($_POST['pasatiempo']) && isset($_POST['color'])){

@@ -49,4 +49,8 @@
 
       return $products;
     }
+
+    public function buyProduct($correo, $id, $nombre, $descripcion, $precio, $sexo, $categoria, $etapa, $color, $url){
+      return $this->model->buyProduct($correo, $id, $nombre, $descripcion, $precio, $sexo, $categoria, $etapa, $color, $url);
+    }
   }

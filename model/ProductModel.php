@@ -44,4 +44,12 @@
 
       return $data;
     }
+
+    public function buyProduct($correo, $id, $nombre, $descripcion, $precio, $sexo, $categoria, $etapa, $color, $url){
+      $query = mysqli_query($this -> conn, "call sp_insertCompras('".$correo."', ".$id.", '".$nombre."','".$descripcion."','".$precio."','".$sexo."','".$etapa."','".$color."','".$categoria."','".$url."')");
+
+      $data = mysqli_fetch_all($query);
+
+      return $data;
+    }
   }
