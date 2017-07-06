@@ -3,6 +3,7 @@
 //include_once 'controller/CloudinaryController.php';
 include_once 'controller/UserController.php';
 include_once 'controller/ProductController.php';
+include_once 'controller/EventController.php';
 
 if(isset($_GET['login'])){
 	$controller = new UserController();
@@ -57,6 +58,19 @@ if(isset($_GET['login'])){
 
 		echo $isRegistered;
 	}
+}elseif(isset($_GET['createEvent'])){
+	$controller = new EventController();
+
+	if(isset($_POST["date"]) && isset($_POST["desc"])){
+		$date = $_POST['date'];
+		$desc = $_POST['desc'];
+		$type = 'user';
+
+		$isCreated = $controller->createEvent($date, $desc, $type);
+
+		echo $isCreated;
+	}
+
 }elseif(isset($_GET['getProducts'])){
 	$controller = new ProductController();
 	if(isset($_POST["sexo"]) && isset($_POST['etapa']) && isset($_POST['pasatiempo']) && isset($_POST['color'])){
@@ -65,15 +79,11 @@ if(isset($_GET['login'])){
 		$categoria = $_POST["pasatiempo"];
 		$color = $_POST["color"];
 
-		//echo json_encode($controller->getProducts($sexo, $id_etapa, $categoria, $color));	
-
-	
-
 
 	//$sexo = "mujer";
-	//$id_etapa = 32;
-	//$categoria = 42;
-	//$color = 22;
+	//$id_etapa = 22;
+	//$categoria = 22;
+	//$color = 42;
 
 
 	$cat = '[';
@@ -126,29 +136,8 @@ if(isset($_GET['login'])){
 
 	
 	
-	print_r($cat);
-	//echo $cat;
-
-
-
-
-	//$controller->getProducts($sexo, $id_etapa, $categoria, $color)
-
-
-	//{ "name":"John", "age":30, "city":"New York"}
-
-
-
-	//print_r($controller->getProducts($sexo, $id_etapa, $categoria, $color));
-	//echo sizeof($controller->getProducts($sexo, $id_etapa, $categoria, $color));
-	//echo json_encode($controller->getProducts($sexo, $id_etapa, $categoria, $color));
-	//echo json_encode('{tipo: 1, nombre: yo}');
-
-
-	//$array = array(1,2,3,4,5,6);
-	//$change = array('key1' => '1', 'key2' => '2', 'key3' => '3');
-	//echo json_encode($change);
-
+	//print_r($cat);
+	echo $cat;
 
 
 
@@ -157,4 +146,39 @@ if(isset($_GET['login'])){
 		echo false;
 	}
 	
+}elseif(isset($_GET['getEvents'])){
+	$controller = new EventController();
+
+	$cat = '[';
+
+	for ($i=0; $i < sizeof($controller->getEvents()); $i++) { 
+		$cat .= '{';
+
+		$cat .= '"id":';
+		$cat .= $controller->getEvents()[$i] -> id;
+		$cat .= ',';
+
+		$cat .= '"date":';
+		$cat .= '"'.$controller->getEvents()[$i] -> date.'"';
+		$cat .= ',';
+
+		$cat .= '"event":';
+		$cat .= '"'.$controller->getEvents()[$i] -> event.'"';
+		$cat .= ',';
+
+		$cat .= '"type":';
+		$cat .= '"'.$controller->getEvents()[$i] -> type.'"';
+
+		$cat .= '}';
+
+		if ($i < sizeof($controller->getEvents()) - 1) {
+			$cat .= ',';
+		}
+	}
+	$cat .= ']';
+
+	
+	
+	//print_r($cat);
+	echo $cat;
 }
