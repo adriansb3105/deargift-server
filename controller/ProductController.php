@@ -1,6 +1,7 @@
 <?php
   include_once 'model/ProductModel.php';
   include_once 'domain/Product.php';
+  include_once 'domain/Cesta.php';
 
   class ProductController{
     private $model;
@@ -53,4 +54,34 @@
     public function buyProduct($correo, $id, $nombre, $descripcion, $precio, $sexo, $categoria, $etapa, $color, $url){
       return $this->model->buyProduct($correo, $id, $nombre, $descripcion, $precio, $sexo, $categoria, $etapa, $color, $url);
     }
+
+    public function getCesta($email){
+
+      $events = array();
+
+         $eventTmp = $this->model->getCesta($email);
+
+         if (sizeof($eventTmp) > 0) {
+          for ($k=0; $k < sizeof($eventTmp); $k++) {
+            $Cesta = new Cesta();
+
+            $Cesta->setId_producto($eventTmp[$k][0]);
+            $Cesta->setNombre($eventTmp[$k][1]);
+            $Cesta->setDescripcion($eventTmp[$k][2]);
+            $Cesta->setPrecio($eventTmp[$k][3]);
+            $Cesta->setSexo($eventTmp[$k][4]);
+            $Cesta->setEtapa($eventTmp[$k][5]);
+            $Cesta->setColor($eventTmp[$k][6]);
+            $Cesta->setCategoria($eventTmp[$k][7]);
+            $Cesta->setUrl($eventTmp[$k][8]);
+
+            array_push($events, $Cesta);
+
+          }
+
+         }
+
+      return $events;
+    }
+
   }

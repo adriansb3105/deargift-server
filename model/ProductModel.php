@@ -52,4 +52,12 @@
 
       return $data;
     }
+
+    public function getCesta($email){
+      $query = mysqli_query($this -> conn, "select id_producto, nombre, descripcion, precio, sexo, etapa, color, categoria, url from Lista_Compras where email = '".$email."';");
+
+      $data = mysqli_fetch_all($query);
+
+      return $data;
+    }
   }

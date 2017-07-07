@@ -202,4 +202,70 @@ if(isset($_GET['login'])){
 	
 	//print_r($cat);
 	echo $cat;
+}elseif(isset($_GET['getCesta'])){
+	$controller = new ProductController();
+
+	$cat = '[';
+
+	//if(isset($_POST["email"])){
+	//	$email = $_POST["email"];
+		$email = 'nela@gmail.com';
+
+		$tmp = $controller->getCesta($email);
+
+
+		for ($i=0; $i < sizeof($tmp); $i++) { 
+			$cat .= '{';
+
+			$cat .= '"id_producto":';
+			$cat .= $tmp[$i] -> id_producto;
+			$cat .= ',';
+
+			$cat .= '"nombre":';
+			$cat .= '"'.$tmp[$i] -> nombre.'"';
+			$cat .= ',';
+
+			$cat .= '"descripcion":';
+			$cat .= '"'.$tmp[$i] -> descripcion.'"';
+			$cat .= ',';
+
+			$cat .= '"precio":';
+			$cat .= $tmp[$i] -> precio;
+			$cat .= ',';
+
+			$cat .= '"sexo":';
+			$cat .= '"'.$tmp[$i] -> sexo.'"';
+			$cat .= ',';
+
+			$cat .= '"etapa":';
+			$cat .= '"'.$tmp[$i] -> etapa.'"';
+			$cat .= ',';
+
+			$cat .= '"color":';
+			$cat .= '"'.$tmp[$i] -> color.'"';
+			$cat .= ',';
+
+			$cat .= '"categoria":';
+			$cat .= '"'.$tmp[$i] -> categoria.'"';
+			$cat .= ',';
+
+			$cat .= '"url":';
+			$cat .= '"'.$tmp[$i] -> url.'"';
+
+			$cat .= '}';
+
+			if ($i < sizeof($tmp) - 1) {
+				$cat .= ',';
+			}
+		}
+	//}
+
+
+
+	$cat .= ']';
+
+	
+	
+	//print_r($cat);
+	echo $cat;
 }
